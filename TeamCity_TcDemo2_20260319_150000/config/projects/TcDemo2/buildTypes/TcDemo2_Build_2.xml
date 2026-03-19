@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="5e48f59f-38e7-4c96-8c23-7d1a4b8e6f1a" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
+  <name>构建打包</name>
+  <description />
+  <settings>
+    <options>
+      <option name="artifactRules" value="CL-%system.build.vcs.number.TcDemo2_TcDemo22% =&gt; nupkg_output\CL-%system.build.vcs.number.TcDemo2_TcDemo22%" />
+      <option name="cleanBuild" value="true" />
+      <option name="executionTimeoutMin" value="1" />
+      <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="nexus" />
+    </disabled-settings>
+    <parameters>
+      <param name="test1" value="111" />
+    </parameters>
+    <build-runners>
+      <runner id="simpleRunner" name="" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="echo This is an error message &gt;&amp;2" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="dotnet" name="构建" type="dotnet">
+        <parameters>
+          <param name="args" value="-t:Clean;Build;Publish -p:Configuration=Release -v:detailed -property:ConsoleEncoding=utf-8" />
+          <param name="command" value="msbuild" />
+          <param name="dotNetCoverage.dotCover.home.path" value="%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%" />
+          <param name="msbuild.version" value="MSBuild_4_Windows" />
+          <param name="paths" value="tc2/tc2.sln" />
+          <param name="required.sdk" value="4.8" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="nupkg" name="打包成nupkg" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.output.directory" value="CL-%system.build.vcs.number.TcDemo2_TcDemo22%" />
+          <param name="nuget.pack.project.dir" value="as_is" />
+          <param name="nuget.pack.properties" value="Configuration=Release" />
+          <param name="nuget.pack.specFile" value="tc2/.nuspec" />
+          <param name="nuget.path" value="C:\Program Files (x86)\nuget.exe" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="nexus" name="推送到nexus" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="echo 'hello'" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="TcDemo2_TcDemo22" />
+    </vcs-settings>
+    <build-triggers>
+      <build-trigger id="TRIGGER_2" type="vcsTrigger">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="perfmon" type="perfmon" />
+    </build-extensions>
+  </settings>
+</build-type>

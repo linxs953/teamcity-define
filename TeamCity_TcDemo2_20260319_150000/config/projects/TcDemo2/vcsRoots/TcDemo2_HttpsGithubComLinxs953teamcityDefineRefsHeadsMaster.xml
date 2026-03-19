@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="7d98e7b2-0c3d-6f5e-2b5a-8c1f9e3a4b6d" type="jetbrains.git" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
+  <name>https://github.com/linxs953/teamcity-define#refs/heads/master</name>
+  <param name="authMethod" value="PASSWORD" />
+  <param name="branch" value="refs/heads/master" />
+  <param name="ignoreKnownHosts" value="true" />
+  <param name="secure:password" value="zxxeb392b05e5f7af10656e5b4c73abfee9" />
+  <param name="submoduleCheckout" value="CHECKOUT" />
+  <param name="teamcity:branchSpec" value="refs/heads/*" />
+  <param name="url" value="https://github.com/linxs953/teamcity-define" />
+  <param name="useAlternates" value="AUTO" />
+  <param name="username" value="linxs953" />
+</vcs-root>
