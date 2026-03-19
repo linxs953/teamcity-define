@@ -48,11 +48,11 @@ object TcDemoVcs : Project({
 object TcDemo : VcsRoot({
     name = "TcDemo"
     id = VcsRootId("TcDemo")
-    url = "https://github.com/your-org/tc2.git"
+    url = "https://github.com/YOUR_USERNAME/teamcity-define.git"
     branch = "refs/heads/main"
     defaultBranch = "refs/heads/main"
     authMethod = defaultMethod {
-        userName = "your-username"
+        userName = "YOUR_GITHUB_USERNAME"
     }
 })
 
