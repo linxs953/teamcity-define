@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="7f46e2f8-8144-4758-9981-cbea0d88645b" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
-  <name>tc-demo2</name>
-  <parameters>
-    <param name="teamcity.git.use.native.ssh" value="true" />
-    <param name="teamcity.internal.pipelines.creation.enabled" value="True" />
-  </parameters>
-</project>
